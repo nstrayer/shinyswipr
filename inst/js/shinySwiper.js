@@ -1,3 +1,4 @@
+console.log("javascript is loaded");
 class swiprCard{
     constructor(id){
         console.log("initializing card with id", id);
@@ -15,12 +16,14 @@ class swiprCard{
         console.log(direction);
         var send_dest = this.id + "-cardSwiped";
         //send the decision to shiny, include count so repete swipes
-        //dont get ignored. 
+        //dont get ignored.
         Shiny.onInputChange(send_dest, this.count + "-" + direction);
 
         //add css class to card to trigger animation.
         this.card.addClass("swipe-" + direction);
 
+        //increment our count upward. 
+        this.count++
         window.setTimeout(() => this.card.removeClass("swipe-" + direction), 2000)
     }
 }
