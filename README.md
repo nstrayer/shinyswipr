@@ -33,7 +33,7 @@ ui <- fixedPage(
 )
 
 server <- function(input, output, session) {
-  card_swipe <- callModule(shinySwipr, "quote_swiper")
+  card_swipe <- callModule(shinySwipr, "my_swiper")
 
   observeEvent( card_swipe(),{
     print(card_swipe) #show last swipe result. 
