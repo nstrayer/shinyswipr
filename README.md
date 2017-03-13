@@ -1,6 +1,6 @@
 #shinyswipr
 
-A simple Shiny module for putting swipe based interfaces into shiny apps. Ever felt like shiny wasn't "tinder-y" enough? Well here you go. 
+A simple Shiny module for putting swipe based interfaces into shiny apps. Ever felt like Shiny wasn't "tinder-y" enough? Well here you go. 
 
 ---
 
