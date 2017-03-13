@@ -1,12 +1,12 @@
 #shinyswipr
 
-A simple Shiny module for putting swipe based interfaces into shiny apps. Ever felt like shiny wasnt "tinder-y" enough? Well here you go. 
+A simple Shiny module for putting swipe based interfaces into shiny apps. Ever felt like shiny wasn't "tinder-y" enough? Well here you go. 
 
 ---
 
 ### Installation 
 
-This package is currently not on Cran so the only way to install it is using github.
+This package is currently not on CRAN so the only way to install it is using github.
 
 ```r
 devtools::install_github("nstrayer/shinyswipr")
@@ -16,7 +16,7 @@ devtools::install_github("nstrayer/shinyswipr")
 
 ### Usage
 
-Two functions are exported from the function: `shinySwiprUI` and `shinySwipr`. These two must be used in conjunction with eachother in both the `ui` and `server` of your shiny app respectively. 
+Two functions are exported by this package: `shinySwiprUI` and `shinySwipr`. These two must be used in conjunction with each other in both the `ui` and `server` of your shiny app respectively. 
 
 `shinySwiprUI` allows you to pass any other UI elements to it, it will then wrap those UI elements in a card interface that can be swiped. 
 
