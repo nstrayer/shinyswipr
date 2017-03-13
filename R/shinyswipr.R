@@ -20,10 +20,7 @@ shinySwiprUI <- function(id, ...) {
 
   tagList(
     singleton(
-      tags$head( #load our javascript files for this. Should probably browserify them into one.
-        # tags$script(src = "touchSwipe.js"),
-        # tags$script(src = "shinySwiper.js"),
-        # tags$link(rel = "stylesheet", type = "text/css", href = "swiprStyle.css")
+      tags$head( #load our javascript files for this.
         tags$script(HTML(touch_swipe_file)),
         tags$script(HTML(shiny_swipe_file)),
         tags$style(HTML(swipe_style_file))
@@ -36,7 +33,7 @@ shinySwiprUI <- function(id, ...) {
 
 #' shinyswipr server function
 #'
-#' This is the server component of the shiny swipr app
+#' This is the server component of the shiny swipr app. You never directly use this function but instead call it through the shiny function `callModule()`. See the example for how to do this.
 #'
 #' @param input you can ignore this as it is taken care of by shiny
 #' @param output you can ignore this as it is taken care of by shiny

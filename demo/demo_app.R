@@ -1,28 +1,31 @@
 #App is a simple card with some content and a little output below that represents the last swipes result.
 
-devtools::build()
-devtools::document()
-devtools::install()
+# devtools::build()
+# devtools::document()
+# devtools::install()
 library(shinyswipr)
 library(shiny)
 library(fortunes)
 
 ui <- fixedPage(
-  shinySwiprUI( "swiper1",
-                h1("Stats Quotes"),
+  h1("Stats Quotes"),
+  p("This is a simple demo of the R package shinyswipr. Swipe on the quote card below to store your rating. What each direction (up, down, left, right) mean is up to you. (We won't tell.)"),
+  hr(),
+  shinySwiprUI( "quote_swiper",
+                h4("Swipe Me!"),
                 hr(),
-                h3("Rate this quote:"),
+                h4("Quote:"),
                 textOutput("quote"),
-                textOutput("quote_author"),
-                hr(),
-                htmlOutput("card_swipe",container = tags$p)
+                h4("Author(s):"),
+                textOutput("quote_author")
   ),
   hr(),
-  dataTableOutput("resultsTable")
+  h4("Swipe History"),
+  tableOutput("resultsTable")
 )
 
 server <- function(input, output, session) {
-  card_swipe <- callModule(shinySwipr, "swiper1")
+  card_swipe <- callModule(shinySwipr, "quote_swiper")
 
   appVals <- reactiveValues(
     quote = fortune(),
@@ -45,7 +48,7 @@ server <- function(input, output, session) {
       appVals$swipes
     )
     #send results to the output.
-    output$resultsTable <- renderDataTable({appVals$swipes})
+    output$resultsTable <- renderTable({appVals$swipes})
 
     #update the quote
     appVals$quote <- fortune()
@@ -59,15 +62,6 @@ server <- function(input, output, session) {
       paste0("-",appVals$quote$author)
     })
   }) #close event observe.
-
-
-  output$card_swipe <- renderUI({
-    if(is.null(card_swipe())){
-      "You didn't swipe yet. Do it!"
-    } else{
-      paste("You",card_swipe(), "swiped the last quote.")
-    }
-  })
 }
 
 shinyApp(ui, server)

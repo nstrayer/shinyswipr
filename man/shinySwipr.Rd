@@ -14,7 +14,7 @@ shinySwipr(input, output, session)
 \item{session}{you can ignore this as it is taken care of by shiny}
 }
 \description{
-This is the server component of the shiny swipr app
+This is the server component of the shiny swipr app. You never directly use this function but instead call it through the shiny function `callModule()`. See the example for how to do this.
 }
 \examples{
 callModule(shinySwipr, "myswipr")
