@@ -6,8 +6,8 @@
 #' @param ... Any other UI elements you wish to include within the swiping zone.
 #' @export
 #' @examples
-#' shinySwiprUI(id = "myswipr", h1("This is my title"), p("here is some text"))
-shinySwiprUI <- function(id, ...) {
+#' shinyswiprUI(id = "myswipr", h1("This is my title"), p("here is some text"))
+shinyswiprUI <- function(id, ...) {
   ns <- NS(id)
 
   #check if the user passed anything else for the card.
@@ -40,18 +40,14 @@ shinySwiprUI <- function(id, ...) {
 #' @param session you can ignore this as it is taken care of by shiny
 #' @export
 #' @examples
-#' callModule(shinySwipr, "myswipr")
-shinySwipr <- function(input, output, session) {
+#' callModule(shinyswipr, "myswipr")
+shinyswipr <- function(input, output, session) {
 
   #the id of our particular card. We send this to javascript.
   card_id <- gsub("-", "", session$ns(""))
 
   #Send over a message to the javascript to initialize the card.
   observe({ session$sendCustomMessage(type = "initializeCard", message = card_id) })
-
-  observeEvent(input$cardSwiped, {
-    print(input$cardSwiped);
-  })
 
   #gather the swipe result.
   swipe_result <- reactive({
