@@ -1,8 +1,6 @@
 #App is a simple card with some content and a little output below that represents the last swipes result.
 
-# devtools::build()
-# devtools::document()
-# devtools::install()
+# devtools::install_github("nstrayer/shinyswipr")
 library(shinyswipr)
 library(shiny)
 library(fortunes)

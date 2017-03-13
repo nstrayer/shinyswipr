@@ -1,3 +1,42 @@
 #shinyswipr
 
-A simple Shiny module for putting swipe based interfaces into shiny apps.
+A simple Shiny module for putting swipe based interfaces into shiny apps. Ever felt like shiny wasnt "tinder-y" enough? Well here you go. 
+
+---
+
+### Installation 
+
+This package is currently not on Cran so the only way to install it is using github.
+
+```r
+devtools::install_github("nstrayer/shinyswipr")
+```
+
+---
+
+### Usage
+
+Two functions are exported from the function: `shinySwiprUI` and `shinySwipr`. These two must be used in conjunction with eachother in both the `ui` and `server` of your shiny app respectively. 
+
+`shinySwiprUI` allows you to pass any other UI elements to it, it will then wrap those UI elements in a card interface that can be swiped. 
+
+A simple app that displays a card and prints to the R console your swipe result would go as follows. 
+
+```r
+library(shinyswipr)
+ui <- fixedPage(
+  shinySwiprUI( "my_swiper",
+                h4("Swipe Me!"),
+                hr(),
+                p("This is some content that would warrent a good swipe")
+  )
+)
+
+server <- function(input, output, session) {
+  card_swipe <- callModule(shinySwipr, "quote_swiper")
+
+  observeEvent( card_swipe(),{
+    print(card_swipe) #show last swipe result. 
+  }) 
+}
+```
