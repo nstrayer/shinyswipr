@@ -28,7 +28,7 @@ server <- function(input, output, session) {
   quote               <- fortune()
   output$quote        <- renderText({ quote$quote })
   output$quote_author <- renderText({ paste0("-",quote$author) })
-  output$resultsTable <- renderDataTable({appVals$swipes})
+  #output$resultsTable <- renderDataTable({appVals$swipes})
 
   appVals <- reactiveValues(
     quote  = quote,

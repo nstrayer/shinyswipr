@@ -25,7 +25,7 @@ A simple app that displays a card and prints to the R console your swipe result 
 ```r
 library(shinyswipr)
 ui <- fixedPage(
-  shinySwiprUI( "my_swiper",
+  shinyswiprUI( "my_swiper",
                 h4("Swipe Me!"),
                 hr(),
                 p("This is some content that would warrent a good swipe")
@@ -33,7 +33,7 @@ ui <- fixedPage(
 )
 
 server <- function(input, output, session) {
-  card_swipe <- callModule(shinySwipr, "my_swiper")
+  card_swipe <- callModule(shinyswipr, "my_swiper")
 
   observeEvent( card_swipe(),{
     print(card_swipe) #show last swipe result. 

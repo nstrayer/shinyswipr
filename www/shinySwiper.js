@@ -1,3 +1,4 @@
+console.log("javascript is loaded");
 class swiprCard{
     constructor(id){
         console.log("initializing card with id", id);
@@ -7,7 +8,7 @@ class swiprCard{
 
         //watch for swipe on the card we are looking at.
         this.card.swipe({
-            swipe: this.swiped.bind(this)
+            swipeLeft: this.swiped.bind(this)
         })
     }
 
@@ -15,12 +16,14 @@ class swiprCard{
         console.log(direction);
         var send_dest = this.id + "-cardSwiped";
         //send the decision to shiny, include count so repete swipes
-        //dont get ignored. 
+        //dont get ignored.
         Shiny.onInputChange(send_dest, this.count + "-" + direction);
 
         //add css class to card to trigger animation.
         this.card.addClass("swipe-" + direction);
 
+        //increment our count upward. 
+        this.count++
         window.setTimeout(() => this.card.removeClass("swipe-" + direction), 2000)
     }
 }
@@ -69,7 +72,7 @@ $(document).on('shiny:connected', event => {
 //  //
 //  //  $("#swipeCard").swipe( {
 //  //      //Generic swipe handler for all directions
-//  //      swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+//  //      swipeLeft: function(event, direction, distance, duration, fingerCount, fingerData) {
 //  //        console.log("we got a swipe");
 //  //        var swipeCard = $("#swipeCard");
 //  //        var decision = null;
@@ -117,7 +120,7 @@ $(document).on('shiny:connected', event => {
 //  //        }
 //  //          , 1000);
 //  //
-//  //      } //end of swipe: function(...)
+//  //      } //end of swipeLeft: function(...)
 //  //
 //  //      });
 //  //
