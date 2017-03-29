@@ -1,4 +1,10 @@
-#shinyswipr
+## Note:
+
+This particular repo is no longer maintained and has been merged into the larger R package for data-collection with shiny, [shinysense](https://github.com/nstrayer/shinysense). Nothing has changed other than the library called in the begining of your app.
+
+---
+
+# shinyswipr
 
 A simple Shiny module for putting swipe based interfaces into shiny apps. Ever felt like Shiny wasn't "tinder-y" enough? Well here you go. 
 
